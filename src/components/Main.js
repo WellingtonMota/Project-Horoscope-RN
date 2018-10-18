@@ -17,6 +17,7 @@ export default class Main extends Component {
         <View style={styles.footer}>
           <TouchableHighlight
             onPress={() => { Actions.signs(); }}
+            underlayColor='#ffffff'
           >
             <Text style={styles.menu}>...</Text>
           </TouchableHighlight>
@@ -33,16 +34,19 @@ const styles = StyleSheet.create({
     flexDirection: 'column'
   },
   section: {
-    flex: 7
+    flex: 9
   },
   footer: {
+    alignItems: 'center',
     backgroundColor: '#ffffff',
-    flex: 1
+    flex: 1,
+    justifyContent: 'center'
   },
   menu: {
     color: '#00a8b9',
     fontSize: 30,
-    textAlign: 'center'
+    textAlign: 'center',
+    width: 340
   },
   text: {
     color: '#00a8b9',

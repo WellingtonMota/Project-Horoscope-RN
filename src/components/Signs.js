@@ -29,6 +29,7 @@ export default class Signs extends Component {
           <View style={styles.block}>
             <TouchableHighlight
               onPress={() => { }}
+              underlayColor='#00a8b9'
             >
               <Image style={styles.image} source={buttonAries} />
             </TouchableHighlight>
@@ -38,15 +39,17 @@ export default class Signs extends Component {
           <View style={styles.block}>
             <TouchableHighlight
               onPress={() => { }}
+              underlayColor='#00a8b9'
             >
               <Image style={styles.image} source={buttonLibra} />
             </TouchableHighlight>
-            <Text style={styles.text}>libra</Text>
+            <Text style={styles.text}>Libra</Text>
           </View>
 
           <View style={styles.block}>
             <TouchableHighlight
               onPress={() => { }}
+              underlayColor='#00a8b9'
             >
               <Image style={styles.image} source={buttonTaurus} />
             </TouchableHighlight>
@@ -56,6 +59,7 @@ export default class Signs extends Component {
           <View style={styles.block}>
             <TouchableHighlight
               onPress={() => { }}
+              underlayColor='#00a8b9'
             >
               <Image style={styles.image} source={buttonScorpio} />
             </TouchableHighlight>
@@ -65,6 +69,7 @@ export default class Signs extends Component {
           <View style={styles.block}>
             <TouchableHighlight
               onPress={() => { }}
+              underlayColor='#00a8b9'
             >
               <Image style={styles.image} source={buttonGemini} />
             </TouchableHighlight>
@@ -74,6 +79,7 @@ export default class Signs extends Component {
           <View style={styles.block}>
             <TouchableHighlight
               onPress={() => { }}
+              underlayColor='#00a8b9'
             >
               <Image style={styles.image} source={buttonSagittarius} />
             </TouchableHighlight>
@@ -83,6 +89,7 @@ export default class Signs extends Component {
           <View style={styles.block}>
             <TouchableHighlight
               onPress={() => { }}
+              underlayColor='#00a8b9'
             >
               <Image style={styles.image} source={buttonCancer} />
             </TouchableHighlight>
@@ -92,6 +99,7 @@ export default class Signs extends Component {
           <View style={styles.block}>
             <TouchableHighlight
               onPress={() => { }}
+              underlayColor='#00a8b9'
             >
               <Image style={styles.image} source={buttonCapricorn} />
             </TouchableHighlight>
@@ -101,6 +109,7 @@ export default class Signs extends Component {
           <View style={styles.block}>
             <TouchableHighlight
               onPress={() => { }}
+              underlayColor='#00a8b9'
             >
               <Image style={styles.image} source={buttonLeo} />
             </TouchableHighlight>
@@ -110,6 +119,7 @@ export default class Signs extends Component {
           <View style={styles.block}>
             <TouchableHighlight
               onPress={() => { }}
+              underlayColor='#00a8b9'
             >
               <Image style={styles.image} source={buttonAquarius} />
             </TouchableHighlight>
@@ -119,6 +129,7 @@ export default class Signs extends Component {
           <View style={styles.block}>
             <TouchableHighlight
               onPress={() => { }}
+              underlayColor='#00a8b9'
             >
               <Image style={styles.image} source={buttonVirgo} />
             </TouchableHighlight>
@@ -128,6 +139,7 @@ export default class Signs extends Component {
           <View style={styles.block}>
             <TouchableHighlight
               onPress={() => { }}
+              underlayColor='#00a8b9'
             >
               <Image style={styles.image} source={buttonPisces} />
             </TouchableHighlight>
