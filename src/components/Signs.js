@@ -21,6 +21,17 @@ const buttonVirgo = require('../assets/images/signs/virgo.jpg');
 const buttonPisces = require('../assets/images/signs/pisces.jpg');
 
 export default class Signs extends Component {
+  constructor(props) {
+    super(props);
+
+    this.state = { sign: '' };
+  }
+
+  dispatchSign(sign) {
+    this.setState({ sign });
+    alert(sign);
+  }
+
   render() {
     return (
       <View style={styles.container}>
@@ -28,7 +39,7 @@ export default class Signs extends Component {
 
           <View style={styles.block}>
             <TouchableHighlight
-              onPress={() => { }}
+              onPress={() => { this.dispatchSign('aries'); }}
               underlayColor='#00a8b9'
             >
               <Image style={styles.image} source={buttonAries} />
@@ -38,7 +49,7 @@ export default class Signs extends Component {
 
           <View style={styles.block}>
             <TouchableHighlight
-              onPress={() => { }}
+              onPress={() => { this.dispatchSign('libra'); }}
               underlayColor='#00a8b9'
             >
               <Image style={styles.image} source={buttonLibra} />
@@ -48,7 +59,7 @@ export default class Signs extends Component {
 
           <View style={styles.block}>
             <TouchableHighlight
-              onPress={() => { }}
+              onPress={() => { this.dispatchSign('taurus'); }}
               underlayColor='#00a8b9'
             >
               <Image style={styles.image} source={buttonTaurus} />
@@ -58,7 +69,7 @@ export default class Signs extends Component {
 
           <View style={styles.block}>
             <TouchableHighlight
-              onPress={() => { }}
+              onPress={() => { this.dispatchSign('scorpio'); }}
               underlayColor='#00a8b9'
             >
               <Image style={styles.image} source={buttonScorpio} />
@@ -68,7 +79,7 @@ export default class Signs extends Component {
 
           <View style={styles.block}>
             <TouchableHighlight
-              onPress={() => { }}
+              onPress={() => { this.dispatchSign('gemini'); }}
               underlayColor='#00a8b9'
             >
               <Image style={styles.image} source={buttonGemini} />
@@ -78,7 +89,7 @@ export default class Signs extends Component {
 
           <View style={styles.block}>
             <TouchableHighlight
-              onPress={() => { }}
+              onPress={() => { this.dispatchSign('sagittarius'); }}
               underlayColor='#00a8b9'
             >
               <Image style={styles.image} source={buttonSagittarius} />
@@ -88,7 +99,7 @@ export default class Signs extends Component {
 
           <View style={styles.block}>
             <TouchableHighlight
-              onPress={() => { }}
+              onPress={() => { this.dispatchSign('cancer'); }}
               underlayColor='#00a8b9'
             >
               <Image style={styles.image} source={buttonCancer} />
@@ -98,7 +109,7 @@ export default class Signs extends Component {
 
           <View style={styles.block}>
             <TouchableHighlight
-              onPress={() => { }}
+              onPress={() => { this.dispatchSign('capricorn'); }}
               underlayColor='#00a8b9'
             >
               <Image style={styles.image} source={buttonCapricorn} />
@@ -108,7 +119,7 @@ export default class Signs extends Component {
 
           <View style={styles.block}>
             <TouchableHighlight
-              onPress={() => { }}
+              onPress={() => { this.dispatchSign('leo'); }}
               underlayColor='#00a8b9'
             >
               <Image style={styles.image} source={buttonLeo} />
@@ -118,7 +129,7 @@ export default class Signs extends Component {
 
           <View style={styles.block}>
             <TouchableHighlight
-              onPress={() => { }}
+              onPress={() => { this.dispatchSign('aquarius'); }}
               underlayColor='#00a8b9'
             >
               <Image style={styles.image} source={buttonAquarius} />
@@ -128,7 +139,7 @@ export default class Signs extends Component {
 
           <View style={styles.block}>
             <TouchableHighlight
-              onPress={() => { }}
+              onPress={() => { this.dispatchSign('virgo'); }}
               underlayColor='#00a8b9'
             >
               <Image style={styles.image} source={buttonVirgo} />
@@ -138,7 +149,7 @@ export default class Signs extends Component {
 
           <View style={styles.block}>
             <TouchableHighlight
-              onPress={() => { }}
+              onPress={() => { this.dispatchSign('pisces'); }}
               underlayColor='#00a8b9'
             >
               <Image style={styles.image} source={buttonPisces} />
