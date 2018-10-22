@@ -7,6 +7,7 @@ import {
   TouchableHighlight,
   View
 } from 'react-native';
+import ArrSigns from '../assets/data/Signs';
 
 export default class Signs extends Component {
   constructor(props) {
@@ -26,56 +27,7 @@ export default class Signs extends Component {
       <View style={styles.container}>
         <FlatList
           numColumns={3}
-          data={[
-            {
-              slug: 'aries',
-              value: 'áries'
-            },
-            {
-              slug: 'libra',
-              value: 'libra'
-            },
-            {
-              slug: 'taurus',
-              value: 'touro'
-            },
-            {
-              slug: 'scorpio',
-              value: 'escorpião'
-            },
-            {
-              slug: 'gemini',
-              value: 'gêmeos'
-            },
-            {
-              slug: 'sagittarius',
-              value: 'sagitário'
-            },
-            {
-              slug: 'cancer',
-              value: 'câncer'
-            },
-            {
-              slug: 'capricorn',
-              value: 'capricórnio'
-            },
-            {
-              slug: 'leo',
-              value: 'leão'
-            },
-            {
-              slug: 'aquarius',
-              value: 'aquário'
-            },
-            {
-              slug: 'virgo',
-              value: 'virgem'
-            },
-            {
-              slug: 'pisces',
-              value: 'peixes'
-            }
-          ]}
+          data={ArrSigns}
           renderItem={({ item }) =>
             <View style={styles.section}>
               <TouchableHighlight
