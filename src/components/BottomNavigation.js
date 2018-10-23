@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
 import {
   StyleSheet,
-  Text,
   TouchableHighlight,
   View
 } from 'react-native';
+import { Icon } from 'native-base';
 import { Actions } from 'react-native-router-flux';
 
 export default class BottomNavigation extends Component {
@@ -15,7 +15,7 @@ export default class BottomNavigation extends Component {
           onPress={() => { Actions.signs(); }}
           underlayColor='#ffffff'
         >
-          <Text style={styles.bottom_navigationButton}>...</Text>
+          <Icon style={styles.bottom_navigationButton} type="FontAwesome" name="th" />
         </TouchableHighlight>
       </View>
     );

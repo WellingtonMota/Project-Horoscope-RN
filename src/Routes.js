@@ -21,7 +21,7 @@ const Routes = () => (
         renderLeftButton={() => (null)} 
         title='Horóscopo do dia'
       />
-      <Scene 
+      <Scene
         component={Signs} 
         key='signs'
         renderBackButton={() => (null)}
