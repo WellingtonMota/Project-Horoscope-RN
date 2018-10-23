@@ -11,12 +11,23 @@ const Routes = () => (
   <Router 
     navigationBarStyle={styles.navBar} 
     titleStyle={styles.navBarTitle} 
-    barButtonTextStyle={styles.barButtonTextStyle} 
-    barButtonIconStyle={styles.barButtonIconStyle}
   >
     <Scene key='root'>
-      <Scene key='main' component={Main} initial title='Horóscopo do dia' />
-      <Scene key='signs' component={Signs} title='Escolha um signo' />
+      <Scene 
+        initial 
+        component={Main} 
+        key='main' 
+        renderBackButton={() => (null)} 
+        renderLeftButton={() => (null)} 
+        title='Horóscopo do dia'
+      />
+      <Scene 
+        component={Signs} 
+        key='signs'
+        renderBackButton={() => (null)}
+        renderLeftButton={() => (null)} 
+        title='Escolha um signo' 
+      />
     </Scene>
   </Router>
 );
@@ -31,12 +42,6 @@ const styles = StyleSheet.create({
     flex: 1,
     fontSize: 18,
     textAlign: 'center'
-  },
-  barButtonTextStyle: {
-    color: '#FFFFFF'
-  },
-  barButtonIconStyle: {
-    tintColor: '#FFFFFF'
   }
 });
 
