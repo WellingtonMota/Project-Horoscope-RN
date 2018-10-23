@@ -7,19 +7,19 @@ import {
   TouchableHighlight,
   View
 } from 'react-native';
+import { Actions } from 'react-native-router-flux';
 import ArrSigns from '../assets/data/Signs';
 
 export default class Signs extends Component {
   constructor(props) {
     super(props);
 
-    this.state = { sign: '' };
+    this.state = { period: '', slug: '', value: '' };
     this.baseUrlImages = 'https://raw.githubusercontent.com/WellingtonMota/Project-Horoscope-RN/master/src/assets/images/signs/';
   }
 
-  dispatchSign(sign) {
-    this.setState({ sign });
-    alert(sign);
+  capitalize(str) {
+    return str.charAt(0).toUpperCase() + str.slice(1);
   }
 
   render() {
@@ -31,7 +31,11 @@ export default class Signs extends Component {
           renderItem={({ item }) =>
             <View style={styles.section}>
               <TouchableHighlight
-                onPress={() => { this.dispatchSign(item.slug); }}
+                onPress={() => Actions.main({ 
+                  period: item.period,
+                  slug: item.slug,
+                  value: item.value
+                })}
                 underlayColor='#00a8b9'
               >
                 <Image 
@@ -39,7 +43,7 @@ export default class Signs extends Component {
                   source={{ uri: `${this.baseUrlImages}${item.slug}.jpg` }}
                 />
               </TouchableHighlight>
-              <Text style={styles.text}>{item.value}</Text>
+              <Text style={styles.text}>{this.capitalize(item.value)}</Text>
             </View>
           }
           keyExtractor={(item, index) => index.toString()}
@@ -64,8 +68,7 @@ const styles = StyleSheet.create({
   text: {
     color: '#ffffff',
     fontSize: 12,
-    textAlign: 'center',
-    textTransform: 'uppercase'
+    textAlign: 'center'
   },
   image: {
     borderColor: '#ffda87',
