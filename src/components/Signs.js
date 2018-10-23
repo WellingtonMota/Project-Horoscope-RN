@@ -15,7 +15,7 @@ export default class Signs extends Component {
     super(props);
 
     this.state = { period: '', slug: '', value: '' };
-    this.baseUrlImages = 'https://raw.githubusercontent.com/WellingtonMota/Project-Horoscope-RN/master/src/assets/images/signs/';
+    this.baseUrlImages = 'https://raw.githubusercontent.com/WellingtonMota/Project-Horoscope-RN/master/src/assets/images/';
   }
 
   capitalize(str) {
@@ -40,7 +40,7 @@ export default class Signs extends Component {
               >
                 <Image 
                   style={styles.image} 
-                  source={{ uri: `${this.baseUrlImages}${item.slug}.jpg` }}
+                  source={{ uri: `${this.baseUrlImages}signs/${item.slug}.jpg` }}
                 />
               </TouchableHighlight>
               <Text style={styles.text}>{this.capitalize(item.value)}</Text>
@@ -60,10 +60,6 @@ const styles = StyleSheet.create({
   },
   section: {
     margin: 10,
-  },
-  block: {
-    height: 100,
-    width: 100
   },
   text: {
     color: '#ffffff',
