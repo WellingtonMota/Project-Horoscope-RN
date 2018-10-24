@@ -14,7 +14,7 @@ export default class Signs extends Component {
   constructor(props) {
     super(props);
 
-    this.state = { period: '', slug: '', value: '' };
+    this.state = { period: '', slug: '', value: '', number: null };
     this.baseUrlImages = 'https://raw.githubusercontent.com/WellingtonMota/Project-Horoscope-RN/master/src/assets/images/';
   }
 
@@ -31,11 +31,14 @@ export default class Signs extends Component {
           renderItem={({ item }) =>
             <View style={styles.section}>
               <TouchableHighlight
-                onPress={() => Actions.main({ 
-                  period: item.period,
-                  slug: item.slug,
-                  value: item.value
-                })}
+                onPress={() => {
+                  Actions.main({ 
+                    period: item.period,
+                    slug: item.slug,
+                    value: item.value,
+                    number: null
+                  });
+                }}
                 underlayColor='#00a8b9'
               >
                 <Image 
