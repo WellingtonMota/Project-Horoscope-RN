@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import * as firebase from 'firebase';
 import {
   AsyncStorage,
   Image,
@@ -7,7 +8,7 @@ import {
   TouchableHighlight,
   View
 } from 'react-native';
-import { Badge, Icon } from 'native-base';
+import { Badge } from 'native-base';
 import { Actions } from 'react-native-router-flux';
 import BottomNavigation from './BottomNavigation';
 import Colors from '../assets/data/Colors';
@@ -16,12 +17,23 @@ export default class Main extends Component {
   constructor(props) {
     super(props);
 
-    this.state = { period: '', slug: '', value: '', number: '' };
+    this.database = firebase.database();
+    this.state = {
+      period: '',
+      slug: '',
+      value: '',
+      number: '',
+      prediction: ''
+    };
     this.baseUrlImages = 'https://raw.githubusercontent.com/WellingtonMota/Project-Horoscope-RN/master/src/assets/images/';
   }
 
-  getRandomNumber() {
-    return Math.floor(Math.random() * 50);
+  componentWillMount() {
+    this.getSigns();
+  }
+
+  getRandomNumber(number) {
+    return Math.floor(Math.random() * number);
   }
 
   getDateToday() {
@@ -33,10 +45,13 @@ export default class Main extends Component {
     return `${dd}/${mm}/${yyyy}`;
   }
 
-  async getKey() {
+  async getSigns() {
     try {
-      const value = await AsyncStorage.getItem('@signsNumbers');
-      this.setState({ number: JSON.parse(value)[this.props.slug] });
+      const valueNumber = await AsyncStorage.getItem('@signsNumbers');
+      const valuePrediction = await AsyncStorage.getItem('@signsPredictions');
+
+      this.setState({ number: JSON.parse(valueNumber)[`${this.props.slug}`] });
+      this.setState({ prediction: JSON.parse(valuePrediction)[`${this.props.slug}`] });
     } catch (error) {
       console.log(`Error retrieving data${error}`);
     }
@@ -46,7 +61,66 @@ export default class Main extends Component {
     return str.charAt(0).toUpperCase() + str.slice(1);
   }
 
-  async saveKey() {
+  async saveSignsPredictions() {
+    const value = await AsyncStorage.getItem('@signsNumbers');
+
+    if (JSON.parse(value).dateNow === this.getDateToday()) {
+      return;
+    }
+
+    const signsPredictionsObj = {};
+
+    this.database.ref(this.getRandomNumber(40)).on('value', snapshot => {
+      signsPredictionsObj.aries = snapshot.val();
+      AsyncStorage.setItem('@signsPredictions', JSON.stringify(signsPredictionsObj));
+    });
+    this.database.ref(this.getRandomNumber(40)).on('value', snapshot => {
+      signsPredictionsObj.libra = snapshot.val();
+      AsyncStorage.setItem('@signsPredictions', JSON.stringify(signsPredictionsObj));
+    });
+    this.database.ref(this.getRandomNumber(40)).on('value', snapshot => {
+      signsPredictionsObj.taurus = snapshot.val();
+      AsyncStorage.setItem('@signsPredictions', JSON.stringify(signsPredictionsObj));
+    });
+    this.database.ref(this.getRandomNumber(40)).on('value', snapshot => {
+      signsPredictionsObj.scorpio = snapshot.val();
+      AsyncStorage.setItem('@signsPredictions', JSON.stringify(signsPredictionsObj));
+    });
+    this.database.ref(this.getRandomNumber(40)).on('value', snapshot => {
+      signsPredictionsObj.gemini = snapshot.val();
+      AsyncStorage.setItem('@signsPredictions', JSON.stringify(signsPredictionsObj));
+    });
+    this.database.ref(this.getRandomNumber(40)).on('value', snapshot => {
+      signsPredictionsObj.sagittarius = snapshot.val();
+      AsyncStorage.setItem('@signsPredictions', JSON.stringify(signsPredictionsObj));
+    });
+    this.database.ref(this.getRandomNumber(40)).on('value', snapshot => {
+      signsPredictionsObj.cancer = snapshot.val();
+      AsyncStorage.setItem('@signsPredictions', JSON.stringify(signsPredictionsObj));
+    });
+    this.database.ref(this.getRandomNumber(40)).on('value', snapshot => {
+      signsPredictionsObj.capricorn = snapshot.val();
+      AsyncStorage.setItem('@signsPredictions', JSON.stringify(signsPredictionsObj));
+    });
+    this.database.ref(this.getRandomNumber(40)).on('value', snapshot => {
+      signsPredictionsObj.leo = snapshot.val();
+      AsyncStorage.setItem('@signsPredictions', JSON.stringify(signsPredictionsObj));
+    });
+    this.database.ref(this.getRandomNumber(40)).on('value', snapshot => {
+      signsPredictionsObj.aquarius = snapshot.val();
+      AsyncStorage.setItem('@signsPredictions', JSON.stringify(signsPredictionsObj));
+    });
+    this.database.ref(this.getRandomNumber(40)).on('value', snapshot => {
+      signsPredictionsObj.virgo = snapshot.val();
+      AsyncStorage.setItem('@signsPredictions', JSON.stringify(signsPredictionsObj));
+    });
+    this.database.ref(this.getRandomNumber(40)).on('value', snapshot => {
+      signsPredictionsObj.pisces = snapshot.val();
+      AsyncStorage.setItem('@signsPredictions', JSON.stringify(signsPredictionsObj));
+    });
+  }
+
+  async saveSignsNumbers() {
     const value = await AsyncStorage.getItem('@signsNumbers');
 
     if (JSON.parse(value).dateNow === this.getDateToday()) {
@@ -54,18 +128,18 @@ export default class Main extends Component {
     }
 
     const signsNumbersObj = {
-      aries: this.getRandomNumber(),
-      libra: this.getRandomNumber(),
-      taurus: this.getRandomNumber(),
-      scorpio: this.getRandomNumber(),
-      gemini: this.getRandomNumber(),
-      sagittarius: this.getRandomNumber(),
-      cancer: this.getRandomNumber(),
-      capricorn: this.getRandomNumber(),
-      leo: this.getRandomNumber(),
-      aquarius: this.getRandomNumber(),
-      virgo: this.getRandomNumber(),
-      pisces: this.getRandomNumber(),
+      aries: this.getRandomNumber(50),
+      libra: this.getRandomNumber(50),
+      taurus: this.getRandomNumber(50),
+      scorpio: this.getRandomNumber(50),
+      gemini: this.getRandomNumber(50),
+      sagittarius: this.getRandomNumber(50),
+      cancer: this.getRandomNumber(50),
+      capricorn: this.getRandomNumber(50),
+      leo: this.getRandomNumber(50),
+      aquarius: this.getRandomNumber(50),
+      virgo: this.getRandomNumber(50),
+      pisces: this.getRandomNumber(50),
       dateNow: this.getDateToday()
     };
 
@@ -92,34 +166,11 @@ export default class Main extends Component {
             </View>
 
             <View style={styles.section__content}>
-              <Text style={styles.section__contentTtile}>
-                Paixões são absolutas
-              </Text>
               <Text style={styles.section__contentDescription}>
-                Sacudidas acordam você para o que acontece em uma relação ou sociedade. 
-                Ou pode ser só o seu desejo de maior autonomia e liberdade. Mudanças vão 
-                se impondo com mais urgência.
+                {this.state.prediction}
               </Text>
 
               <View style={styles.section__contentLuck}>
-                <TouchableHighlight
-                  onPress={() => {
-                    this.getKey();
-                  }}
-                  underlayColor='#ffffff'
-                >
-                  <View style={styles.section__contentLuckButton}>
-                    <Icon 
-                      style={styles.section__contentLuckButtonIcon} 
-                      type="FontAwesome" 
-                      name="trash"
-                    />
-                    <Text style={styles.section__contentLuckButtonText}>
-                      Pegue a cor e o número do seu dia.
-                    </Text>
-                  </View>
-                </TouchableHighlight>
-
                 <View style={styles.section__contentLuckBadge}>
                   <Badge 
                     style={{ backgroundColor: Colors[this.state.number ? this.state.number : 50] }}
@@ -142,7 +193,8 @@ export default class Main extends Component {
         <View style={styles.section}>
           <TouchableHighlight
             onPress={() => { 
-              this.saveKey();
+              this.saveSignsPredictions();
+              this.saveSignsNumbers();
               Actions.signs();
             }}
             underlayColor='#00a8b9'
@@ -231,19 +283,6 @@ const styles = StyleSheet.create({
   },
   section__contentLuck: {
     alignItems: 'center'
-  },
-  section__contentLuckButton: {
-    alignItems: 'center',
-    backgroundColor: '#ededed'
-  },
-  section__contentLuckButtonIcon: {
-    color: '#333333',
-    fontSize: 40,
-    margin: 10
-  },
-  section__contentLuckButtonText: {
-    fontSize: 14,
-    fontWeight: 'bold'
   },
   section__contentLuckBadge: {
     alignItems: 'center',

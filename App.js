@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import SplashScreen from 'react-native-splash-screen';
-import firebase from '@firebase/app';
+import * as firebase from 'firebase';
 import Routes from './src/Routes';
 
 export default class App extends Component {
